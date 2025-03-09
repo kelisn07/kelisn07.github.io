@@ -43,7 +43,7 @@ function initTheme() {
       document.body.classList.add('light-mode');
       sunIcon.style.display = 'none';
       moonIcon.style.display = 'inline';
-      logo.src = '../assets/logo/logo_bk.svg';
+      logo.src = 'assets/logo/logo_bk.svg';
   } else {
       document.body.classList.remove('light-mode');
       sunIcon.style.display = 'inline';
