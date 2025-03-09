@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.L Studio | Cityscapes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html">
+                <img id='logo' src="../assets/logo/logo_wt.svg" alt="Logo">
+            </a>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li>
+                    <a href="portrait.html" class="nav-link">PORTRAIT</a>
+                </li>
+                <li>
+                    <a href="landscape.html" class="nav-link">LANDSCAPE</a>
+                </li>
+                <li>
+                    <a href="automotive.html" class="nav-link">AUTOMOTIVE</a>
+                </li>
+                <li>
+                    <a href="landscape.html" class="nav-link">COMMISSIONS</a>
+                </li>
+                <li>
+                    <a href="cityscape.html" class="nav-link">CITYSCAPE</a>
+                </li>
+                <li>
+                    <a href="life.html" class="nav-link">LIFE</a>
+                </li>
+                <li>
+                    <a href="../about.html" class="nav-link"> ABOUT</a>
+                </li>
+            </ul>
+            <button id="theme-toggle" class="theme-btn">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon" style="display: none;"></i>
+            </button>
+        </nav>
+    </header>
+    <main>
+        <div class="image-gallery">
+            <img data-src="../assets/images/Cityscape/budapest_1.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/cologne_1.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/copenhagen_1.jpg" class="gallery-item portrait">
+            <img data-src="../assets/images/Cityscape/copenhagen_2.jpg" class="gallery-item portrait">
+            <img data-src="../assets/images/Cityscape/copenhagen_3.jpg" class="gallery-item portrait">
+            <img data-src="../assets/images/Cityscape/duesseldorf_1.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/florence_1.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/frankfurt_1.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/frankfurt_2.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/hongtong_1.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/hongtong_2.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/london_1.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/london_2.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/munich_1.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/munich_2.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/munich_3.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/munich_4.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/munich_5.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/munich_6.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/munich_7.jpg" class="gallery-item landscape">
+            <img data-src="../assets/images/Cityscape/vatican_1.jpg" class="gallery-item landscape">
+        </div>
+    </main>
+    <div class="modal" id="modal">
+        <span class="close" id="close">&times;</span>
+        <div class="modal-content">
+            <img class="modal-image" id="modal-image">
+            <div class="navigation">
+                <button class="prev" id="prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="next" id="next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/source.js"></script>
+</body>
+</html>
