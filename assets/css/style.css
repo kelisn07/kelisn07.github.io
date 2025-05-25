@@ -287,9 +287,9 @@ a {
     position: relative;
     width: 100vw;
     overflow: hidden;
-    flex: 1 1 400px;
+    /* flex: 1 1 400px; */
     /* max-width: 1200px; */
-    /* aspect-ratio: 16 / 9; */
+    aspect-ratio: 30 / 9;
     text-decoration: none;
     /* border-radius: 10px; */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
