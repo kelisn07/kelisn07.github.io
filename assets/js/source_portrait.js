@@ -63,12 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const images = Array.from(gallery.querySelectorAll('.gallery-item'));
 
-  // 打乱图片顺序
-  // const shuffledImages = shuffleArray(images);
-
-  // 清空容器并重新插入打乱后的图片
-  // gallery.innerHTML = '';
-  // shuffledImages.forEach(img => gallery.appendChild(img));
+  const shuffledImages = shuffleArray(images);
+  shuffledImages.forEach(img => gallery.appendChild(img));
+  galleryImages = shuffledImages;
 
   // 懒加载功能
   const observer = new IntersectionObserver((entries, observer) => {
@@ -89,8 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     threshold: 0.1 // 当图片 10% 进入视口时触发
   });
 
-  // replace images with shuffledImages if you want to shuffle the images
-  images.forEach(img => {
+  shuffledImages.forEach(img => {
     observer.observe(img);
   });
 });
@@ -110,7 +106,7 @@ const modalImage = document.getElementById('modal-image');
 const closeBtn = document.getElementById('close');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
-const galleryImages = Array.from(document.querySelectorAll('.gallery-item'));
+let galleryImages = Array.from(document.querySelectorAll('.gallery-item'));
 
 let currentIndex = 0;
 
