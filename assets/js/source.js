@@ -57,6 +57,10 @@ initTheme();
 // lazy load images
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = document.querySelector('.image-gallery');
+  if (!gallery) {
+    return;
+  }
+
   const images = Array.from(gallery.querySelectorAll('.gallery-item'));
 
   // 打乱图片顺序
@@ -65,14 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // 清空容器并重新插入打乱后的图片
   gallery.innerHTML = '';
   shuffledImages.forEach(img => gallery.appendChild(img));
+  galleryImages = shuffledImages;
 
   // 懒加载功能
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target;
-        img.src = img.dataset.src; // 加载图片
-        img.classList.add('loaded'); // 添加加载完成样式
+        img.addEventListener('load', () => img.classList.add('loaded'), { once: true });
+        img.addEventListener('error', () => {
+          img.classList.add('loaded', 'load-error');
+          console.error('Failed to load gallery image:', img.dataset.src);
+        }, { once: true });
+        img.src = img.dataset.src;
         observer.unobserve(img); // 停止观察已加载的图片
       }
     });
@@ -101,7 +110,7 @@ const modalImage = document.getElementById('modal-image');
 const closeBtn = document.getElementById('close');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
-const galleryImages = document.querySelectorAll('.gallery-item');
+let galleryImages = Array.from(document.querySelectorAll('.gallery-item'));
 
 let currentIndex = 0;
 
@@ -109,7 +118,8 @@ let currentIndex = 0;
 function openModal(index) {
     currentIndex = index;
     modal.style.display = 'flex';
-    modalImage.src = galleryImages[currentIndex].src;
+    modalImage.src = galleryImages[currentIndex].dataset.full || galleryImages[currentIndex].dataset.src || galleryImages[currentIndex].src;
+    modalImage.alt = galleryImages[currentIndex].alt;
 }
 
 // 关闭 Modal
@@ -124,7 +134,8 @@ function showPrev() {
     } else {
         currentIndex = galleryImages.length - 1; // 循环到最后一张
     }
-    modalImage.src = galleryImages[currentIndex].src;
+    modalImage.src = galleryImages[currentIndex].dataset.full || galleryImages[currentIndex].dataset.src || galleryImages[currentIndex].src;
+    modalImage.alt = galleryImages[currentIndex].alt;
 }
 
 // 显示下一张图片
@@ -134,12 +145,13 @@ function showNext() {
     } else {
         currentIndex = 0; // 循环到第一张
     }
-    modalImage.src = galleryImages[currentIndex].src;
+    modalImage.src = galleryImages[currentIndex].dataset.full || galleryImages[currentIndex].dataset.src || galleryImages[currentIndex].src;
+    modalImage.alt = galleryImages[currentIndex].alt;
 }
 
 // 绑定事件
-galleryImages.forEach((image, index) => {
-    image.addEventListener('click', () => openModal(index));
+galleryImages.forEach(image => {
+    image.addEventListener('click', () => openModal(galleryImages.indexOf(image)));
 });
 
 closeBtn.addEventListener('click', closeModal);

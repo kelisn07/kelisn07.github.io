@@ -57,6 +57,10 @@ initTheme();
 // lazy load images
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = document.querySelector('.image-gallery');
+  if (!gallery) {
+    return;
+  }
+
   const images = Array.from(gallery.querySelectorAll('.gallery-item'));
 
   // 打乱图片顺序
